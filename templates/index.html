@@ -1,36 +1,43 @@
-<section class="home">
-  <p class="home__bio">{{ config['bio_paragraph'] }}</p>
+<div class="home-split">
+  <aside class="home-split__left">
+    <div class="home-split__ascii">
+      <figure class="ascii-art" aria-label="simonespazio">
+        <pre>{% include 'ascii-art.html' %}</pre>
+      </figure>
+    </div>
+    <div id="newsletter" class="home-split__newsletter">
+      {% include 'newsletter.html' %}
+    </div>
+  </aside>
 
-  <div id="newsletter" class="home__newsletter">
-    {% include 'newsletter.html' %}
-  </div>
-
-  {% if store.products.size > 0 %}
-    <hr class="home__rule">
-
-    <ul class="merch-grid" aria-label="Merch">
-      {% for product in store.products %}
-        <li class="merch-card">
-          <a class="merch-card__link" href="{{ product.url }}">
-            {% if product.images.size > 0 %}
-              <span class="merch-card__thumb">
-                <img src="{{ product.images.first.v600_url }}" alt="{{ product.name | escape }}">
+  <section class="home-split__right">
+    {% if store.products.size == 0 %}
+      <p>Nessun articolo disponibile al momento.</p>
+    {% else %}
+      <ul class="merch-grid" aria-label="Merch">
+        {% for product in store.products %}
+          <li class="merch-card">
+            <a class="merch-card__link" href="{{ product.url }}">
+              {% if product.images.size > 0 %}
+                <span class="merch-card__thumb">
+                  <img src="{{ product.images.first.v600_url }}" alt="{{ product.name | escape }}">
+                </span>
+              {% endif %}
+              <span class="merch-card__caption">
+                <span class="merch-card__name">{{ product.name }}</span>
+                <span class="merch-card__sep">&gt;</span>
+                <span class="merch-card__price">
+                  {% if product.available? %}
+                    {{ product.price_range.first | money }}
+                  {% else %}
+                    Esaurito
+                  {% endif %}
+                </span>
               </span>
-            {% endif %}
-            <span class="merch-card__caption">
-              <span class="merch-card__name">{{ product.name }}</span>
-              <span class="merch-card__sep">&gt;</span>
-              <span class="merch-card__price">
-                {% if product.available? %}
-                  {{ product.price_range.first | money }}
-                {% else %}
-                  Esaurito
-                {% endif %}
-              </span>
-            </span>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-</section>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </section>
+</div>

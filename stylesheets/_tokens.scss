@@ -11,7 +11,11 @@ $color-muted: #6B6459;
 // Hershey-Noailles-Futura: an engraved-stroke geometric mono. IBM Plex Mono
 // self-hosts from the same family we already load and pairs cleanly with the
 // cream/black palette.
-$font-body: "IBM Plex Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+// Body font stack. The head of the stack (--font-family-custom) is set by
+// stylesheets/font.css from the merchant's `font_family_name` config setting.
+// Falls back to a system mono stack if the setting is empty or the remote
+// font fails to load.
+$font-body: var(--font-family-custom, ui-monospace), ui-monospace, "SF Mono", "Menlo", "Cascadia Mono", "DejaVu Sans Mono", monospace;
 
 $fs-body: 13px;
 $fs-small: 11px;
