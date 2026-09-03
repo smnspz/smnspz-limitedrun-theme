@@ -1,0 +1,13 @@
+{
+  "name": "smnspz-limitedrun-theme",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Limited Run theme",
+  "scripts": {
+    "dev": "limitedrun dev",
+    "build": "limitedrun build"
+  },
+  "devDependencies": {
+    "@limitedrun/cli": "^0.2.0"
+  }
+}
