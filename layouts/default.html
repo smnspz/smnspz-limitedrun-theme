@@ -6,14 +6,7 @@
     <title>
       {% if product %}{{ product.name }} — simonespazio{% elsif category %}{{ category.name }} — simonespazio{% elsif order %}Ordine {{ order.number }} — simonespazio{% else %}simonespazio{% endif %}
     </title>
-    {% if product %}
-      <meta name="description" content="{{ product.description | strip_html | escape | strip_newlines }}">
-    {% else %}
-      <meta name="description" content="simonespazio — merch a tiratura limitata e newsletter.">
-    {% endif %}
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F5F1EA'/%3E%3Ctext x='16' y='23' font-family='IBM Plex Mono, monospace' font-size='20' text-anchor='middle' fill='%23111'%3Es%3C/text%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=ibm-plex-mono:400,500&display=swap" rel="stylesheet">
+    {{ 'font.css' | asset_url | stylesheet_tag: 'screen' }}
     {{ 'default.css' | asset_url | stylesheet_tag: 'screen' }}
   </head>
   <body>
@@ -30,17 +23,6 @@
       {% include 'footer.html' %}
     </div>
 
-    <div class="cart-overlay" data-cart-overlay hidden>
-      <div class="cart-panel" role="dialog" aria-label="Carrello">
-        <div class="cart-panel__header">
-          <span class="wordmark">carrello</span>
-          <button type="button" class="cart-panel__close" data-cart-close aria-label="Chiudi">chiudi</button>
-        </div>
-        <div data-cart-body></div>
-      </div>
-    </div>
-
-    <!-- Limited Run cart runtime, required once per page. -->
     {{ store_script_tag }}
     {{ 'default.js' | asset_url | script_tag }}
   </body>

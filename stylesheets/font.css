@@ -1,0 +1,26 @@
+{% comment %}
+  Merchant-configurable webfont. Loaded before default.css in the layout so
+  the @font-face rule and the --font-family-custom CSS variable are available
+  when the compiled SCSS is applied.
+
+  Kept as a plain .css file (not .scss) because Liquid runs against .css but
+  not .scss — the merchant's font URL / family name are read from configs
+  here and the SCSS side consumes only the resulting CSS variable.
+{% endcomment %}
+
+{% if config['font_url'] != '' and config['font_family_name'] != '' %}
+@font-face {
+  font-family: '{{ config['font_family_name'] }}';
+  src: url('{{ config['font_url'] }}') format('truetype-variations'),
+       url('{{ config['font_url'] }}') format('truetype'),
+       url('{{ config['font_url'] }}') format('woff2'),
+       url('{{ config['font_url'] }}') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-family-custom: '{{ config['font_family_name'] }}';
+}
+{% endif %}

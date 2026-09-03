@@ -1,10 +1,10 @@
 <footer class="site-footer">
   <span>&copy; {{ 'now' | date: "%Y" }} simonespazio</span>
   <span>
-    <a href="mailto:{{ store.mailbox.email }}">Email</a>
+    <a href="mailto:{{ config['contact_email'] }}">Email</a>
     &middot;
     <a href="{{ config['instagram_url'] }}" target="_blank" rel="noopener">Instagram</a>
     &middot;
-    <a href="#newsletter">Newsletter</a>
+    <a href="{{ config['musica_url'] }}" target="_blank" rel="noopener">Musica</a>
   </span>
 </footer>

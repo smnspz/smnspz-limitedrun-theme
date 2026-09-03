@@ -7,11 +7,12 @@
   },
   "sort": 1,
   "settings": {
-    "bio_paragraph": {
+    "contact_email": {
       "format": "text",
-      "label": "Biografia (colonna sinistra della home)",
-      "help": "Breve testo di presentazione mostrato accanto al modulo di iscrizione.",
-      "default": "simonespazio è il progetto solista di Simone. Merch a tiratura limitata, aggiornamenti sporadici via newsletter.",
+      "label": "Email di contatto",
+      "help": "Indirizzo mostrato nel link «Email» del footer.",
+      "placeholder": "hello@simonespazio.com",
+      "default": "",
       "position": 0
     },
     "instagram_url": {
@@ -19,8 +20,40 @@
       "label": "URL Instagram",
       "help": "Link mostrato nel footer.",
       "placeholder": "https://instagram.com/…",
-      "default": "https://instagram.com/simonespazio",
+      "default": "",
       "position": 1
+    },
+    "musica_url": {
+      "format": "text",
+      "label": "URL Musica",
+      "help": "Link «Musica» mostrato nel footer (Bandcamp, Spotify, o dove trovare la musica).",
+      "placeholder": "https://…",
+      "default": "",
+      "position": 2
+    },
+    "favicon_image_url": {
+      "format": "image",
+      "content_type": true,
+      "label": "Favicon",
+      "help": "Carica un'immagine per la favicon (opzionale).",
+      "placeholder": "http://",
+      "position": 3
+    },
+    "font_family_name": {
+      "format": "text",
+      "label": "Font — nome famiglia",
+      "help": "Nome CSS della famiglia (es: «Berkeley Mono»). Lasciare vuoto per usare il font di sistema.",
+      "placeholder": "Berkeley Mono",
+      "default": "",
+      "position": 4
+    },
+    "font_url": {
+      "format": "text",
+      "label": "Font — URL del file",
+      "help": "URL restituito da «Storefront → HTML/CSS → Upload font». Deve essere un file .ttf, .woff o .woff2.",
+      "placeholder": "https://f9.limitedrun.com/fonts/…",
+      "default": "",
+      "position": 5
     }
   }
 }
