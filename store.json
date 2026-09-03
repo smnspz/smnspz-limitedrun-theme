@@ -6,7 +6,12 @@
   "mailbox": {
     "title": "Contatti"
   },
-  "config": {},
+  "config": {
+    "font_family_name": "Berkeley Mono",
+    "font_url": "https://f9.limitedrun.com/fonts/1852/berkeley-mono-variable-2.ttf",
+    "contact_email": "hello@simonespazio.com",
+    "instagram_url": "https://instagram.com/simonespazio"
+  },
   "pages": [],
   "categories": [
     {
@@ -16,6 +21,76 @@
     }
   ],
   "products": [
+    {
+      "id": 2,
+      "name": "Cassetta — vol. 01",
+      "slug": "cassetta-vol-01",
+      "description": "<p>Cassetta audio a tiratura limitata.</p>",
+      "url": "/products/cassetta-vol-01",
+      "images": [
+        { "url": "https://picsum.photos/seed/cassetta/1200", "v600_url": "https://picsum.photos/seed/cassetta/600", "v300_url": "https://picsum.photos/seed/cassetta/300" }
+      ],
+      "variations": [ { "id": 201, "name": "Unica", "price": 12.0, "available?": true } ],
+      "price_range": [12.0, 12.0],
+      "custom": {},
+      "available?": true, "announced?": false, "unavailable?": false, "unlisted?": false, "eligible_for_availability_notices?": true
+    },
+    {
+      "id": 3,
+      "name": "Poster — simonespazio",
+      "slug": "poster-simonespazio",
+      "description": "<p>Poster serigrafato 50x70cm.</p>",
+      "url": "/products/poster-simonespazio",
+      "images": [
+        { "url": "https://picsum.photos/seed/poster/1200", "v600_url": "https://picsum.photos/seed/poster/600", "v300_url": "https://picsum.photos/seed/poster/300" }
+      ],
+      "variations": [ { "id": 301, "name": "Unica", "price": 18.0, "available?": true } ],
+      "price_range": [18.0, 18.0],
+      "custom": {},
+      "available?": true, "announced?": false, "unavailable?": false, "unlisted?": false, "eligible_for_availability_notices?": true
+    },
+    {
+      "id": 4,
+      "name": "Tote bag — simonespazio",
+      "slug": "tote-simonespazio",
+      "description": "<p>Tote bag in cotone naturale con stampa nera.</p>",
+      "url": "/products/tote-simonespazio",
+      "images": [
+        { "url": "https://picsum.photos/seed/tote/1200", "v600_url": "https://picsum.photos/seed/tote/600", "v300_url": "https://picsum.photos/seed/tote/300" }
+      ],
+      "variations": [ { "id": 401, "name": "Unica", "price": 15.0, "available?": true } ],
+      "price_range": [15.0, 15.0],
+      "custom": {},
+      "available?": true, "announced?": false, "unavailable?": false, "unlisted?": false, "eligible_for_availability_notices?": true
+    },
+    {
+      "id": 5,
+      "name": "Zine — appunti n.1",
+      "slug": "zine-appunti-n1",
+      "description": "<p>Zine A5 40 pagine, stampa risograph.</p>",
+      "url": "/products/zine-appunti-n1",
+      "images": [
+        { "url": "https://picsum.photos/seed/zine/1200", "v600_url": "https://picsum.photos/seed/zine/600", "v300_url": "https://picsum.photos/seed/zine/300" }
+      ],
+      "variations": [ { "id": 501, "name": "Unica", "price": 10.0, "available?": false } ],
+      "price_range": [10.0, 10.0],
+      "custom": {},
+      "available?": false, "announced?": false, "unavailable?": true, "unlisted?": false, "eligible_for_availability_notices?": true
+    },
+    {
+      "id": 6,
+      "name": "Cappellino — nero",
+      "slug": "cappellino-nero",
+      "description": "<p>Cappellino nero con logo ricamato bianco.</p>",
+      "url": "/products/cappellino-nero",
+      "images": [
+        { "url": "https://picsum.photos/seed/hat/1200", "v600_url": "https://picsum.photos/seed/hat/600", "v300_url": "https://picsum.photos/seed/hat/300" }
+      ],
+      "variations": [ { "id": 601, "name": "Unica", "price": 22.0, "available?": true } ],
+      "price_range": [22.0, 22.0],
+      "custom": {},
+      "available?": true, "announced?": false, "unavailable?": false, "unlisted?": false, "eligible_for_availability_notices?": true
+    },
     {
       "id": 1,
       "name": "T-shirt — simonespazio",
