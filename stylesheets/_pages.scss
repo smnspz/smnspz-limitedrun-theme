@@ -1,0 +1,55 @@
+@use "tokens" as *;
+
+// Page-scoped overrides. Kept small on purpose — layout and components do the heavy lifting.
+
+.home-intro {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+}
+
+.home-intro__bio {
+  font-size: $fs-body;
+  line-height: 1.55;
+  max-width: 34ch;
+}
+
+.category-header,
+.page-header {
+  margin-bottom: $sp-5;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+}
+
+.page-header__title {
+  font-size: $fs-wordmark;
+  font-weight: $fw-regular;
+  text-transform: lowercase;
+}
+
+.product-title {
+  font-size: $fs-wordmark;
+  font-weight: $fw-regular;
+  text-transform: lowercase;
+}
+
+.product-description {
+  font-size: $fs-body;
+  line-height: 1.55;
+
+  p + p {
+    margin-top: $sp-3;
+  }
+
+  em {
+    font-style: italic;
+  }
+}
+
+.not-found {
+  padding: $sp-8 0;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+}

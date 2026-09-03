@@ -1,0 +1,35 @@
+// Design tokens for the simonespazio theme.
+// Palette: warm off-white background, near-black foreground, no accent color.
+// Type: single family (IBM Plex Sans), body-first scale, one display size for the wordmark.
+
+$color-bg: #F5F1EA;
+$color-fg: #111111;
+$color-rule: #111111;
+$color-muted: #6B6459;
+
+// Single mono family for everything, closest free equivalent to Emma Sato's
+// Hershey-Noailles-Futura: an engraved-stroke geometric mono. IBM Plex Mono
+// self-hosts from the same family we already load and pairs cleanly with the
+// cream/black palette.
+$font-body: "IBM Plex Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+
+$fs-body: 13px;
+$fs-small: 11px;
+$fs-wordmark: 15px;
+$lh-body: 1.5;
+
+$fw-regular: 400;
+$fw-medium: 500;
+
+$sp-1: 4px;
+$sp-2: 8px;
+$sp-3: 12px;
+$sp-4: 16px;
+$sp-5: 24px;
+$sp-6: 32px;
+$sp-7: 48px;
+$sp-8: 64px;
+
+$content-max: 1200px;
+$gutter: 32px;
+$bp-mobile: 768px;

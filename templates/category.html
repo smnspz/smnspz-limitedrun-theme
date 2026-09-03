@@ -1,0 +1,30 @@
+<header class="category-header">
+  <h1 class="page-header__title">{{ category.name | downcase }}</h1>
+  {% if category.description %}
+    <p>{{ category.description | strip_html }}</p>
+  {% endif %}
+</header>
+
+<section class="merch-list" aria-label="{{ category.name | escape }}">
+  {% if category.products.size == 0 %}
+    <p>Nessun articolo in questa categoria.</p>
+  {% else %}
+    {% for product in category.products %}
+      <a class="merch-row" href="{{ product.url }}">
+        <span class="merch-row__thumb">
+          {% if product.images.size > 0 %}
+            <img src="{{ product.images.first.v300_url }}" alt="{{ product.name | escape }}">
+          {% endif %}
+        </span>
+        <span class="merch-row__name">{{ product.name }}</span>
+        <span class="merch-row__price">
+          {% if product.available? %}
+            {{ product.price_range.first | money }}
+          {% else %}
+            Esaurito
+          {% endif %}
+        </span>
+      </a>
+    {% endfor %}
+  {% endif %}
+</section>

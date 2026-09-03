@@ -1,0 +1,45 @@
+{% comment %} Product page: stacked images left, sticky info panel right on desktop; single column on mobile. {% endcomment %}
+<article class="two-col" data-product-id="{{ product.id }}">
+  <div class="product-images">
+    {% for image in product.images %}
+      <img src="{{ image.v600_url }}" alt="{{ product.name | escape }}">
+    {% endfor %}
+  </div>
+
+  <aside class="product-info">
+    <h1 class="product-title">{{ product.name }}</h1>
+
+    <div class="price" data-product-price>
+      {% if product.available? %}
+        {{ product.price_range.first | money }}
+      {% else %}
+        Esaurito
+      {% endif %}
+    </div>
+
+    {% if product.variations.size > 0 %}
+      <div>
+        <div class="sizes" role="group" aria-label="Taglia">
+          {% for variation in product.variations %}
+            <button
+              type="button"
+              class="size"
+              data-variation-id="{{ variation.id }}"
+              data-variation-name="{{ variation.name | escape }}"
+              data-variation-price="{{ variation.price }}"
+              {% unless variation.available? %}disabled aria-disabled="true"{% endunless %}
+              aria-pressed="false">
+              {{ variation.name }}
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <button type="button" class="buy" data-add-to-cart disabled>Aggiungi al carrello</button>
+
+    <div class="product-description">
+      {{ product.description }}
+    </div>
+  </aside>
+</article>

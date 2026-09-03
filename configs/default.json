@@ -1,0 +1,26 @@
+{
+  "name": "simonespazio",
+  "description": "<p>Tema minimale, editoriale, in italiano per il progetto musicale <strong>simonespazio</strong>.</p>",
+  "author": {
+    "name": "Simone Rosani",
+    "website": "https://github.com/smnspz"
+  },
+  "sort": 1,
+  "settings": {
+    "bio_paragraph": {
+      "format": "text",
+      "label": "Biografia (colonna sinistra della home)",
+      "help": "Breve testo di presentazione mostrato accanto al modulo di iscrizione.",
+      "default": "simonespazio è il progetto solista di Simone. Merch a tiratura limitata, aggiornamenti sporadici via newsletter.",
+      "position": 0
+    },
+    "instagram_url": {
+      "format": "text",
+      "label": "URL Instagram",
+      "help": "Link mostrato nel footer.",
+      "placeholder": "https://instagram.com/…",
+      "default": "https://instagram.com/simonespazio",
+      "position": 1
+    }
+  }
+}

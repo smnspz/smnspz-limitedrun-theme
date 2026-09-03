@@ -1,0 +1,369 @@
+@use "tokens" as *;
+
+// Wordmark: lowercase, one size up, weight 400.
+
+.wordmark {
+  font-size: $fs-wordmark;
+  font-weight: $fw-regular;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+}
+
+// Cart indicator: sits in the header, flips to show count.
+
+.cart-indicator {
+  font-size: $fs-body;
+  padding: $sp-1 0;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom-color: $color-fg;
+  }
+}
+
+// Newsletter form: email input + submit button on a single hairline row.
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+}
+
+.newsletter__label {
+  font-size: $fs-small;
+  color: $color-muted;
+}
+
+.newsletter__row {
+  display: flex;
+  gap: 0;
+  border: 1px solid $color-fg;
+}
+
+.newsletter__input {
+  flex: 1 1 auto;
+  padding: $sp-2 $sp-3;
+  background: transparent;
+  border: 0;
+  outline: none;
+
+  &::placeholder {
+    color: $color-muted;
+  }
+}
+
+.newsletter__submit {
+  padding: $sp-2 $sp-4;
+  border-left: 1px solid $color-fg;
+  background: $color-fg;
+  color: $color-bg;
+
+  &:hover {
+    background: transparent;
+    color: $color-fg;
+  }
+}
+
+.newsletter__hint {
+  font-size: $fs-small;
+  color: $color-muted;
+}
+
+// Merch list: numbered rows with thumbnail + name + price.
+
+.merch-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.merch-row {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  gap: $sp-4;
+  align-items: center;
+  padding: $sp-4 0;
+  border-top: 1px solid $color-fg;
+
+  &:last-child {
+    border-bottom: 1px solid $color-fg;
+  }
+}
+
+.merch-row__thumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.merch-row__name {
+  font-weight: $fw-medium;
+}
+
+.merch-row__price {
+  font-variant-numeric: tabular-nums;
+}
+
+// Size selector: horizontal row of segmented buttons.
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid $color-fg;
+  width: fit-content;
+}
+
+.size {
+  padding: $sp-2 $sp-4;
+  min-width: 48px;
+  text-align: center;
+  border-right: 1px solid $color-fg;
+  background: transparent;
+  color: $color-fg;
+  font-variant-numeric: tabular-nums;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &[aria-pressed="true"] {
+    background: $color-fg;
+    color: $color-bg;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    text-decoration: line-through;
+    color: $color-muted;
+    cursor: not-allowed;
+  }
+}
+
+.size-sold-out {
+  font-size: $fs-small;
+  color: $color-muted;
+  margin-top: $sp-1;
+}
+
+// Primary buy button.
+
+.buy {
+  display: inline-block;
+  padding: $sp-3 $sp-5;
+  background: $color-fg;
+  color: $color-bg;
+  border: 1px solid $color-fg;
+
+  &:hover {
+    background: transparent;
+    color: $color-fg;
+  }
+
+  &:disabled {
+    background: transparent;
+    color: $color-muted;
+    border-color: $color-muted;
+    cursor: not-allowed;
+  }
+}
+
+// Product info panel (right column on desktop, sticky).
+
+.product-info {
+  position: sticky;
+  top: $sp-5;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-5;
+
+  @media (max-width: $bp-mobile) {
+    position: static;
+  }
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.price {
+  font-size: $fs-wordmark;
+  font-variant-numeric: tabular-nums;
+}
+
+// Order summary table.
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: $sp-3 0;
+    border-bottom: 1px solid $color-fg;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    font-weight: $fw-medium;
+    font-size: $fs-small;
+    color: $color-muted;
+  }
+
+  td:last-child, th:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.order-totals {
+  margin-top: $sp-5;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-2;
+  font-variant-numeric: tabular-nums;
+}
+
+.order-totals__row {
+  display: flex;
+  justify-content: space-between;
+
+  &--total {
+    border-top: 1px solid $color-fg;
+    padding-top: $sp-2;
+    font-weight: $fw-medium;
+  }
+}
+
+// Cart overlay: fixed panel, right side, minimal.
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.2);
+  display: none;
+  z-index: 1000;
+
+  &[data-open="true"] {
+    display: block;
+  }
+}
+
+.cart-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 420px;
+  background: $color-bg;
+  border-left: 1px solid $color-fg;
+  padding: $sp-5;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $sp-4;
+}
+
+.cart-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: $sp-3;
+  border-bottom: 1px solid $color-fg;
+}
+
+.cart-panel__close {
+  font-size: $fs-body;
+  padding: $sp-1 $sp-2;
+}
+
+.cart-empty {
+  color: $color-muted;
+  padding: $sp-5 0;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: $sp-3;
+  padding: $sp-3 0;
+  border-bottom: 1px solid $color-fg;
+  align-items: center;
+}
+
+.cart-item__thumb {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cart-item__meta {
+  display: flex;
+  flex-direction: column;
+  gap: $sp-1;
+  font-size: $fs-small;
+}
+
+.cart-item__name {
+  font-weight: $fw-medium;
+}
+
+.cart-item__remove {
+  font-size: $fs-small;
+  color: $color-muted;
+  text-decoration: underline;
+
+  &:hover {
+    color: $color-fg;
+  }
+}
+
+.cart-item__price {
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: $sp-3;
+  border-top: 1px solid $color-fg;
+  font-variant-numeric: tabular-nums;
+  font-weight: $fw-medium;
+}
+
+.cart-checkout {
+  display: block;
+  text-align: center;
+  padding: $sp-3 $sp-5;
+  background: $color-fg;
+  color: $color-bg;
+  margin-top: $sp-2;
+
+  &:hover {
+    background: transparent;
+    color: $color-fg;
+    outline: 1px solid $color-fg;
+  }
+}

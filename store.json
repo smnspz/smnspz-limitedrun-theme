@@ -1,0 +1,106 @@
+{
+  "$schema": "./store.schema.json",
+  "name": "simonespazio",
+  "url": "http://localhost:4567",
+  "subdomain": "simonespazio",
+  "mailbox": {
+    "title": "Contatti"
+  },
+  "config": {},
+  "pages": [],
+  "categories": [
+    {
+      "name": "Merch",
+      "slug": "merch",
+      "url": "/categories/merch"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "T-shirt — simonespazio",
+      "slug": "tshirt-simonespazio",
+      "description": "<p>T-shirt bianca in cotone pettinato 100%. Stampa serigrafica nera del wordmark <em>simonespazio</em> sul petto.</p><p>Tiratura limitata. Spedizioni dall'Italia entro 3–5 giorni lavorativi.</p>",
+      "url": "/products/tshirt-simonespazio",
+      "images": [
+        {
+          "url": "https://picsum.photos/seed/tshirt-front/1200",
+          "v075_url": "https://picsum.photos/seed/tshirt-front/75",
+          "v200_url": "https://picsum.photos/seed/tshirt-front/200",
+          "v300_url": "https://picsum.photos/seed/tshirt-front/300",
+          "v600_url": "https://picsum.photos/seed/tshirt-front/600"
+        },
+        {
+          "url": "https://picsum.photos/seed/tshirt-back/1200",
+          "v075_url": "https://picsum.photos/seed/tshirt-back/75",
+          "v200_url": "https://picsum.photos/seed/tshirt-back/200",
+          "v300_url": "https://picsum.photos/seed/tshirt-back/300",
+          "v600_url": "https://picsum.photos/seed/tshirt-back/600"
+        },
+        {
+          "url": "https://picsum.photos/seed/tshirt-detail/1200",
+          "v075_url": "https://picsum.photos/seed/tshirt-detail/75",
+          "v200_url": "https://picsum.photos/seed/tshirt-detail/200",
+          "v300_url": "https://picsum.photos/seed/tshirt-detail/300",
+          "v600_url": "https://picsum.photos/seed/tshirt-detail/600"
+        }
+      ],
+      "variations": [
+        { "id": 101, "name": "S", "price": 25.0, "available?": true },
+        { "id": 102, "name": "M", "price": 25.0, "available?": true },
+        { "id": 103, "name": "L", "price": 25.0, "available?": true },
+        { "id": 104, "name": "XL", "price": 25.0, "available?": false }
+      ],
+      "price_range": [25.0, 25.0],
+      "custom": {},
+      "available?": true,
+      "announced?": false,
+      "unavailable?": false,
+      "unlisted?": false,
+      "eligible_for_availability_notices?": true
+    }
+  ],
+  "orders": [
+    {
+      "number": "1001",
+      "key": "abc123",
+      "digital": false,
+      "state": "paid",
+      "status": "Pagato",
+      "transaction_id": "TXN-98765",
+      "item_count": 1,
+      "subtotal": 25.0,
+      "shipping": 6.0,
+      "total_price": 31.0,
+      "total_weight": 250,
+      "customer": {
+        "first_name": "Ada",
+        "last_name": "Rossi",
+        "email": "ada@example.com"
+      },
+      "shipping_address": {
+        "first_name": "Ada",
+        "last_name": "Rossi",
+        "street_address_1": "Via Roma 12",
+        "street_address_2": "",
+        "city": "Milano",
+        "state": "MI",
+        "postal_code": "20121",
+        "country": "Italia"
+      },
+      "items": [
+        {
+          "name": "T-shirt — simonespazio (M)",
+          "digital": false,
+          "unit_price": 25.0,
+          "quantity": 1,
+          "total_price": 25.0,
+          "total_weight": 250
+        }
+      ],
+      "downloads": [],
+      "attempted?": true
+    }
+  ],
+  "message": {}
+}

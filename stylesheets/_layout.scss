@@ -1,0 +1,89 @@
+@use "tokens" as *;
+
+// Base document surfaces and the page shell (header, main grid, footer).
+
+html, body {
+  background-color: $color-bg;
+  color: $color-fg;
+  font-family: $font-body;
+  font-size: $fs-body;
+  line-height: $lh-body;
+  font-weight: $fw-regular;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// The shell is itself a vertical flex so the footer can stick to the bottom
+// of the viewport when the page content is short. Header/main/footer stack;
+// main grows to fill the remaining height.
+
+.shell {
+  width: 100%;
+  max-width: $content-max;
+  margin: 0 auto;
+  padding: $sp-5 $gutter;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $bp-mobile) {
+    padding: $sp-4 $sp-4;
+  }
+}
+
+.site-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: $sp-4;
+  padding-bottom: $sp-5;
+}
+
+.site-main {
+  flex: 1 0 auto;
+  padding-bottom: $sp-7;
+}
+
+// margin-top:auto pushes the footer to the bottom of the shell — sticky-footer
+// pattern without JS or fixed positioning.
+
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid $color-rule;
+  padding-top: $sp-3;
+  padding-bottom: $sp-3;
+  font-size: $fs-small;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-4;
+  justify-content: space-between;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) 1fr;
+  gap: $sp-7;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: $sp-6;
+  }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: $sp-7;
+  align-items: start;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+    gap: $sp-5;
+  }
+}

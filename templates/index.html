@@ -1,0 +1,32 @@
+<div class="split">
+  <aside class="home-intro">
+    <p class="home-intro__bio">{{ config['bio_paragraph'] }}</p>
+    <div id="newsletter">
+      {% include 'newsletter.html' %}
+    </div>
+  </aside>
+
+  <section class="merch-list" aria-label="Merch">
+    {% if store.products.size == 0 %}
+      <p>Nessun articolo disponibile al momento.</p>
+    {% else %}
+      {% for product in store.products %}
+        <a class="merch-row" href="{{ product.url }}">
+          <span class="merch-row__thumb">
+            {% if product.images.size > 0 %}
+              <img src="{{ product.images.first.v300_url }}" alt="{{ product.name | escape }}">
+            {% endif %}
+          </span>
+          <span class="merch-row__name">{{ product.name }}</span>
+          <span class="merch-row__price">
+            {% if product.available? %}
+              {{ product.price_range.first | money }}
+            {% else %}
+              Esaurito
+            {% endif %}
+          </span>
+        </a>
+      {% endfor %}
+    {% endif %}
+  </section>
+</div>

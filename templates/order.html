@@ -1,0 +1,50 @@
+<header class="page-header">
+  <h1 class="page-header__title">ordine {{ order.number }}</h1>
+  <p>Stato: {{ order.status }}</p>
+</header>
+
+<table class="order-table">
+  <thead>
+    <tr>
+      <th>Articolo</th>
+      <th>Qtà</th>
+      <th>Totale</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in order.items %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.total_price | money }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="order-totals">
+  <div class="order-totals__row">
+    <span>Subtotale</span>
+    <span>{{ order.subtotal | money }}</span>
+  </div>
+  <div class="order-totals__row">
+    <span>Spedizione</span>
+    <span>{{ order.shipping | money }}</span>
+  </div>
+  <div class="order-totals__row order-totals__row--total">
+    <span>Totale</span>
+    <span>{{ order.total_price | money }}</span>
+  </div>
+</div>
+
+{% if order.shipping_address %}
+  <section style="margin-top: 32px;">
+    <h2 class="page-header__title" style="font-size: 16px; margin-bottom: 8px;">indirizzo di spedizione</h2>
+    <p>
+      {{ order.shipping_address.first_name }} {{ order.shipping_address.last_name }}<br>
+      {{ order.shipping_address.street_address_1 }}{% if order.shipping_address.street_address_2 != '' %}, {{ order.shipping_address.street_address_2 }}{% endif %}<br>
+      {{ order.shipping_address.postal_code }} {{ order.shipping_address.city }} {% if order.shipping_address.state != '' %}({{ order.shipping_address.state }}){% endif %}<br>
+      {{ order.shipping_address.country }}
+    </p>
+  </section>
+{% endif %}
