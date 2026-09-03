@@ -1,32 +1,36 @@
-<div class="split">
-  <aside class="home-intro">
-    <p class="home-intro__bio">{{ config['bio_paragraph'] }}</p>
-    <div id="newsletter">
-      {% include 'newsletter.html' %}
-    </div>
-  </aside>
+<section class="home">
+  <p class="home__bio">{{ config['bio_paragraph'] }}</p>
 
-  <section class="merch-list" aria-label="Merch">
-    {% if store.products.size == 0 %}
-      <p>Nessun articolo disponibile al momento.</p>
-    {% else %}
+  <div id="newsletter" class="home__newsletter">
+    {% include 'newsletter.html' %}
+  </div>
+
+  {% if store.products.size > 0 %}
+    <hr class="home__rule">
+
+    <ul class="merch-grid" aria-label="Merch">
       {% for product in store.products %}
-        <a class="merch-row" href="{{ product.url }}">
-          <span class="merch-row__thumb">
+        <li class="merch-card">
+          <a class="merch-card__link" href="{{ product.url }}">
             {% if product.images.size > 0 %}
-              <img src="{{ product.images.first.v300_url }}" alt="{{ product.name | escape }}">
+              <span class="merch-card__thumb">
+                <img src="{{ product.images.first.v600_url }}" alt="{{ product.name | escape }}">
+              </span>
             {% endif %}
-          </span>
-          <span class="merch-row__name">{{ product.name }}</span>
-          <span class="merch-row__price">
-            {% if product.available? %}
-              {{ product.price_range.first | money }}
-            {% else %}
-              Esaurito
-            {% endif %}
-          </span>
-        </a>
+            <span class="merch-card__caption">
+              <span class="merch-card__name">{{ product.name }}</span>
+              <span class="merch-card__sep">&gt;</span>
+              <span class="merch-card__price">
+                {% if product.available? %}
+                  {{ product.price_range.first | money }}
+                {% else %}
+                  Esaurito
+                {% endif %}
+              </span>
+            </span>
+          </a>
+        </li>
       {% endfor %}
-    {% endif %}
-  </section>
-</div>
+    </ul>
+  {% endif %}
+</section>
