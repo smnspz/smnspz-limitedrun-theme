@@ -1,5 +1,14 @@
 @use "tokens" as *;
 
+// Sticky header and fixed footer heights. Consumed by .site-header,
+// .site-footer, and the home-split layout offsets.
+$header-h: 48px;
+$footer-h: 44px;
+
+// Font family and @font-face live in stylesheets/font.css so they can read
+// the merchant-configured font URL/name via Liquid (SCSS is not Liquid-aware).
+// _tokens.scss reads the resulting CSS custom property.
+
 // Base document surfaces and the page shell (header, main grid, footer).
 
 html, body {
@@ -11,6 +20,11 @@ html, body {
   font-weight: $fw-regular;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // Stop iOS Safari from auto-boosting small font sizes — otherwise the
+  // ASCII art's calc()-derived font-size gets clamped up on iPhone, making
+  // the portrait look stretched horizontally.
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -27,49 +41,61 @@ body {
   width: 100%;
   max-width: $content-max;
   margin: 0 auto;
-  padding: $sp-5 $gutter;
+  padding: 0 $gutter;
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
 
   @media (max-width: $bp-mobile) {
-    padding: $sp-4 $sp-4;
+    padding: 0 $sp-4;
   }
 }
 
-// Centered narrow row: wordmark on the left edge, cart on the right edge,
-// constrained to the same 460px column as the home layout.
+// Full-width row: wordmark on the left edge of the shell, cart on the right.
+// Sticky to the viewport top with an opaque background so scrolling content
+// passes underneath it.
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: $color-bg;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
   gap: $sp-4;
   width: 100%;
-  max-width: 460px;
-  margin: 0 auto;
-  padding-bottom: $sp-6;
+  height: $header-h;
+  padding: $sp-3 0;
 }
 
 .site-main {
   flex: 1 0 auto;
-  padding-bottom: $sp-7;
+  padding-bottom: $footer-h;
 }
 
-// margin-top:auto pushes the footer to the bottom of the shell — sticky-footer
-// pattern without JS or fixed positioning.
+// Footer is fixed to the viewport bottom with an opaque background so scrolling
+// content passes underneath it.
 
 .site-footer {
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-bg;
   border-top: 1px solid $color-rule;
-  padding-top: $sp-3;
-  padding-bottom: $sp-3;
+  padding: $sp-3 $gutter;
   font-size: $fs-small;
   display: flex;
   flex-wrap: wrap;
   gap: $sp-4;
   justify-content: space-between;
+  z-index: 50;
+
+  @media (max-width: $bp-mobile) {
+    padding: $sp-3 $sp-4;
+  }
 }
 
 .split {
