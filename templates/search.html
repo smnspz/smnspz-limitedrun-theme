@@ -1,0 +1,16 @@
+{% comment %} Placeholder — search page not used in MVP. Kept as a stub. {% endcomment %}
+<div class="not-found">
+  <h1 class="page-header__title">ricerca</h1>
+  {% if products.size > 0 %}
+    <section class="merch-list">
+      {% for product in products %}
+        <a class="merch-row" href="{{ product.url }}">
+          <span class="merch-row__name">{{ product.name }}</span>
+          <span class="merch-row__price">{{ product.price_range.first | money }}</span>
+        </a>
+      {% endfor %}
+    </section>
+  {% else %}
+    <p>Nessun risultato per "{{ query }}".</p>
+  {% endif %}
+</div>
