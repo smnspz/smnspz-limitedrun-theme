@@ -57,7 +57,40 @@ zip only ever contains ".css"/".js". No config, no extra install.
 
 "npm run build", then upload dist/smnspz-limitedrun-theme.zip in the Limited Run admin under
 Storefront → Themes. store.json and store.schema.json are excluded from the zip
-automatically.
+automatically. A versioned copy dist/smnspz-limitedrun-theme-<version>.zip is
+emitted alongside for archival.
+
+Every build also writes snippets/version.html (gitignored) containing an HTML
+comment with the version, ISO date, and short git SHA. layouts/default.html
+includes it as the first line inside <head>, so "view-source" on the live
+storefront reveals which build is running.
+
+## Releasing
+
+Versioning is SemVer, tagged in git, documented in CHANGELOG.md
+(Keep a Changelog format). Bumps happen at release moments, not per upload.
+
+    # 1. Curate CHANGELOG.md from commits since the last tag.
+    git log v<last>..HEAD --oneline
+    # Move [Unreleased] entries under a new "## [x.y.z] — YYYY-MM-DD" heading;
+    # add a fresh empty [Unreleased] above; update compare/tag link refs.
+
+    # 2. Bump, tag, and push in one shot.
+    npm version <patch|minor|major>
+    # → "version" hook: git add CHANGELOG.md (lands in the version commit)
+    # → npm: commit + tag v<x.y.z>
+    # → "postversion" hook: git push --follow-tags
+
+    # 3. Build and upload the versioned zip.
+    npm run build
+    # → dist/smnspz-limitedrun-theme.zip
+    # → dist/smnspz-limitedrun-theme-<x.y.z>.zip
+
+Upload the zip in the LR admin and click "Use This Theme" on the new card.
+
+No pre-releases (no rc/beta). SemVer contract: MAJOR = breaking
+layout/settings requiring re-configuration; MINOR = new features/settings;
+PATCH = fixes with no merchant-visible change.
 
 ---
 
