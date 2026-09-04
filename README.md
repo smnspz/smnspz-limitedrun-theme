@@ -56,10 +56,46 @@ mono fallback) until values are supplied.
 
 ## Deploy
 
-`npm run build`, then upload `dist/smnspz-limitedrun-theme.zip` in the LR
+`npm run build`, then upload `dist/smnspz-limitedrun-theme.zip` (or the
+versioned copy `dist/smnspz-limitedrun-theme-<version>.zip`) in the LR
 admin under Storefront → Themes. Every upload creates a **new** "Imported
 …" theme card — you must click **"Use This Theme"** on the newest one to
 activate it.
+
+## Releasing
+
+Versioning follows [SemVer](https://semver.org). Bumps happen at release
+moments (not per upload), tagged in git, and documented in
+[`CHANGELOG.md`](./CHANGELOG.md) in [Keep a Changelog](https://keepachangelog.com/)
+format.
+
+```sh
+# 1. Curate CHANGELOG.md from commits since the last tag.
+git log v1.0.0..HEAD --oneline
+# Edit CHANGELOG.md: move accumulated notes from [Unreleased] under a
+# new heading "## [1.1.0] — 2026-09-04", add a fresh empty [Unreleased]
+# above, update the compare/tag link references at the bottom.
+
+# 2. Bump + tag + push in one shot.
+npm version <patch|minor|major>
+# → "version" hook restages CHANGELOG.md so it lands in the version commit
+# → npm commits + tags v<x.y.z>
+# → "postversion" hook runs `git push --follow-tags`
+
+# 3. Build and upload the versioned zip.
+npm run build
+# → dist/smnspz-limitedrun-theme.zip           (unversioned, for muscle memory)
+# → dist/smnspz-limitedrun-theme-1.1.0.zip     (archival)
+```
+
+In the LR admin, upload the zip and click **Use This Theme** on the new
+card.
+
+Pushing a `v*.*.*` tag also triggers
+[`.github/workflows/release.yml`](.github/workflows/release.yml), which
+builds the theme, extracts the matching section from `CHANGELOG.md` as
+the release body, and publishes a GitHub Release with the versioned zip
+attached.
 
 See [`docs/limited-run-quirks.md`](./docs/limited-run-quirks.md) — if it
 exists in your fork — or the upstream `AGENTS.md` production-quirks section
