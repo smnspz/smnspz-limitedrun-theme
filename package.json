@@ -5,7 +5,6 @@
   "description": "simonespazio — Limited Run storefront theme",
   "scripts": {
     "dev": "limitedrun dev",
-    "prebuild": "node scripts/generate-version-snippet.mjs",
     "build": "limitedrun build && cp dist/smnspz-limitedrun-theme.zip dist/smnspz-limitedrun-theme-$npm_package_version.zip",
     "version": "git add CHANGELOG.md",
     "postversion": "git push --follow-tags"

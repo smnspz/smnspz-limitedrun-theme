@@ -62,13 +62,6 @@ admin under Storefront → Themes. Every upload creates a **new** "Imported
 …" theme card — you must click **"Use This Theme"** on the newest one to
 activate it.
 
-Every build emits an HTML comment as the first line of `<head>`, e.g.
-`<!-- smnspz-limitedrun-theme v1.2.3 · 2026-09-04 · a1b2c3d -->`, so you
-can `view-source` on the live storefront to confirm which build is
-running. The snippet is generated at build time from `package.json`,
-today's date, and the short git SHA; it lives at `snippets/version.html`
-and is gitignored.
-
 ## Releasing
 
 Versioning follows [SemVer](https://semver.org). Bumps happen at release

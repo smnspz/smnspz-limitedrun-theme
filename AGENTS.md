@@ -60,11 +60,6 @@ Storefront → Themes. store.json and store.schema.json are excluded from the zi
 automatically. A versioned copy dist/smnspz-limitedrun-theme-<version>.zip is
 emitted alongside for archival.
 
-Every build also writes snippets/version.html (gitignored) containing an HTML
-comment with the version, ISO date, and short git SHA. layouts/default.html
-includes it as the first line inside <head>, so "view-source" on the live
-storefront reveals which build is running.
-
 ## Releasing
 
 Versioning is SemVer, tagged in git, documented in CHANGELOG.md
