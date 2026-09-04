@@ -177,12 +177,14 @@
 .product-info {
   position: sticky;
   top: $sp-5;
+  margin-top: $sp-4;
   display: flex;
   flex-direction: column;
   gap: $sp-5;
 
   @media (max-width: $bp-mobile) {
     position: static;
+    margin-top: 0;
   }
 }
 
@@ -194,6 +196,17 @@
   img {
     width: 100%;
     height: auto;
+    max-height: calc(100vh - 48px - 44px - #{$sp-7});
+    object-fit: contain;
+    object-position: left top;
+    margin-top: $sp-4;
+  }
+
+  @media (max-width: $bp-mobile) {
+    img {
+      max-height: none;
+      margin-top: 0;
+    }
   }
 }
 
