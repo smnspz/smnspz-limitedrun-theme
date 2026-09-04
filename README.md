@@ -98,6 +98,12 @@ npm run build
 In the LR admin, upload the zip and click **Use This Theme** on the new
 card.
 
+Pushing a `v*.*.*` tag also triggers
+[`.github/workflows/release.yml`](.github/workflows/release.yml), which
+builds the theme, extracts the matching section from `CHANGELOG.md` as
+the release body, and publishes a GitHub Release with the versioned zip
+attached.
+
 See [`docs/limited-run-quirks.md`](./docs/limited-run-quirks.md) — if it
 exists in your fork — or the upstream `AGENTS.md` production-quirks section
 for the full list of undocumented LR gotchas we hit while shipping v1.

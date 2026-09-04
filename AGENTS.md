@@ -88,6 +88,10 @@ Versioning is SemVer, tagged in git, documented in CHANGELOG.md
 
 Upload the zip in the LR admin and click "Use This Theme" on the new card.
 
+Pushing a v*.*.* tag also triggers .github/workflows/release.yml, which builds
+the theme in CI, extracts the matching section from CHANGELOG.md as the release
+body, and publishes a GitHub Release with the versioned zip attached.
+
 No pre-releases (no rc/beta). SemVer contract: MAJOR = breaking
 layout/settings requiring re-configuration; MINOR = new features/settings;
 PATCH = fixes with no merchant-visible change.
